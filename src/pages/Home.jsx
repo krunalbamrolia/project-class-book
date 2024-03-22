@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
-import { BaseUrl } from '../../Constant';
+import { BaseUrl } from '../Constant';
 
 const ProductList = () => {
     let name = useRef();
@@ -62,10 +62,6 @@ const ProductList = () => {
         setSearchTerm(event.target.value);
     };
 
-    const handleSort = (event) => {
-        setSortBy(event.target.value);
-    };
-
     const sortedProducts = [...products].sort((a, b) => {
         if (sortBy === 'name') {
             return a.name.localeCompare(b.name);
@@ -105,7 +101,6 @@ const ProductList = () => {
             <table className="table table-bordered text-center">
                 <thead>
                     <tr>
-                        <th scope="col">Book Image</th>
                         <th scope="col">Book Name</th>
                         <th scope="col">Author Name</th>
                         <th scope="col">Description</th>
@@ -142,6 +137,8 @@ const ProductList = () => {
                         </div>
                         <div className="modal-body">
                             <input type="text" value={update.name} placeholder='Product Name' name='name' onChange={updateHandler} />
+                            <input type="text" value={update.Author} placeholder='Author' name='Author' onChange={updateHandler} />
+                            <input type="text" value={update.description} placeholder='description' name='description' onChange={updateHandler} />
                             <input type="text" value={update.price} placeholder='Price' name='price' onChange={updateHandler} />
                         </div>
                         <div className="modal-footer">
